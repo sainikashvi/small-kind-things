@@ -155,16 +155,11 @@ footer{padding:36px 0 56px;color:var(--mute);font-size:.95rem;display:flex;justi
     <li>Meet new people only in public places, never at their home.</li>
     <li>Ask before sharing anyone’s photo or story.</li>
     <li>We never ask for passwords, OTPs or bank details. If anyone does in our name, ignore it.</li>
-    <li>If someone is in danger or distress, don’t handle it alone. Tele-MANAS (14416) is free, 24x7.</li>
     <li>Help because you want to, not for the camera.</li>
   </ul>
 </section>
 </main>
 
-<footer>
-  <span>Made by students in Ludhiana, India.</span>
-  <a href="https://www.instagram.com/small.kind.things" target="_blank" rel="noopener noreferrer">@small.kind.things on Instagram</a>
-</footer>
 </div>
 
 <script>
@@ -208,6 +203,7 @@ footer{padding:36px 0 56px;color:var(--mute);font-size:.95rem;display:flex;justi
   document.getElementById("another").addEventListener("click",function(){
     var n;do{n=Math.floor(Math.random()*ideas.length)}while(n===cur);cur=n;show();
   });
+  // logo: two rings and a heart outline
   var svg=document.getElementById("logo"),NS="http://www.w3.org/2000/svg";
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
   el("circle",{cx:0,cy:0,r:48,fill:"none",stroke:"#7A9A6B","stroke-width":14});
