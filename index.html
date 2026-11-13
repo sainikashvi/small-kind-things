@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>small.kind.things</title>
+<meta name="description" content="A student-led kindness chain. Someone helped you, now it’s your turn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F2E9;--ink:#2F2A24;--mute:#6B6458;--card:#FFFFFF;--line:#D9D0BE;
+  --s-bg:#DCE7D3;--s-ac:#7A9A6B;--s-ink:#2F4A3A;
+  --b-bg:#F3D6CD;--b-ac:#D98C7A;--b-ink:#5A3329;
+  --y-bg:#F6E3A8;--y-ac:#D9A93E;--y-ink:#5C4513;
+  --k-bg:#D5E4EF;--k-ac:#6F9CBF;--k-ink:#26435C;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --type:"Courier Prime","Courier New",monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1D1B17;--ink:#F1EBDD;--mute:#B5AC9B;--card:#2A2722;--line:#443F36;
+  --s-bg:#2E3B2B;--s-ac:#93B484;--s-ink:#DCE9D2;
+  --b-bg:#4A302B;--b-ac:#E8A190;--b-ink:#F7DDD5;
+  --y-bg:#4A3E1B;--y-ac:#E5BC57;--y-ink:#F7E8B8;
+  --k-bg:#26384A;--k-ac:#86B1D3;--k-ink:#D6E6F3;}}
+:root[data-theme="dark"]{
+  --bg:#1D1B17;--ink:#F1EBDD;--mute:#B5AC9B;--card:#2A2722;--line:#443F36;
+  --s-bg:#2E3B2B;--s-ac:#93B484;--s-ink:#DCE9D2;
+  --b-bg:#4A302B;--b-ac:#E8A190;--b-ink:#F7DDD5;
+  --y-bg:#4A3E1B;--y-ac:#E5BC57;--y-ink:#F7E8B8;
+  --k-bg:#26384A;--k-ac:#86B1D3;--k-ink:#D6E6F3;}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--k-ac);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.05rem var(--sans);letter-spacing:.01em}
+.brand svg{width:56px;height:22px}
+nav{display:flex;gap:20px;font-size:.95rem}
+nav a{text-decoration:none;color:var(--mute)}nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:36px 0 64px}
+h1{font:500 clamp(2.4rem,6vw,4.1rem)/1.06 var(--serif);margin:0 0 20px;letter-spacing:-.01em}
+h1 em{font-style:italic}
+.lead{color:var(--mute);max-width:34ch;margin:0 0 28px;font-size:1.1rem}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem var(--sans);padding:13px 22px;border-radius:999px;text-decoration:none;background:var(--s-ac);color:#fff;min-height:46px}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn:hover{filter:brightness(.95)}
+:root[data-theme="dark"] .btn:not(.alt),:root:not([data-theme="light"]) .btn:not(.alt){--btn-ink:#1D1B17}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn:not(.alt){color:#1D1B17}}
+:root[data-theme="dark"] .btn:not(.alt){color:#1D1B17}
+.polaroid{position:relative;background:var(--card);padding:22px 22px 26px;border-radius:6px;box-shadow:0 14px 30px rgba(60,45,20,.16);transform:rotate(1.6deg);max-width:380px;margin:0 auto}
+.tape{position:absolute;top:-14px;left:50%;width:110px;height:30px;margin-left:-55px;transform:rotate(-4deg);background:var(--y-ac);opacity:.75;border-radius:2px}
+.tape::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 9px,rgba(255,255,255,.45) 9px 11px)}
+.today-l{font:700 .9rem var(--type);color:var(--mute);margin:8px 0 14px}
+.today{font:italic 500 1.75rem/1.25 var(--serif);min-height:5.6em;margin:0 0 18px}
+.polaroid .btn{background:var(--b-ac);font-size:.95rem;padding:10px 18px;min-height:42px}
+section{padding:56px 0}
+h2{font:500 clamp(1.8rem,4vw,2.5rem)/1.15 var(--serif);margin:0 0 12px}
+.sub{color:var(--mute);margin:0 0 30px;max-width:52ch}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;background:var(--card);border-radius:14px;padding:22px;border:1px solid var(--line)}
+.steps li::before{content:counter(s);display:block;font:700 1.2rem var(--type);color:var(--s-ac);margin-bottom:8px}
+.steps b{display:block;font:500 1.25rem var(--serif);margin-bottom:4px}
+.steps span{color:var(--mute);font-size:.98rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
+.chip{border:0;cursor:pointer;font:500 .95rem var(--sans);padding:8px 16px;border-radius:999px;background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);min-height:40px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:none}
+.wall{columns:3 260px;column-gap:18px}
+.note{break-inside:avoid;margin:0 0 18px;padding:22px 20px 18px;border-radius:12px;position:relative;font:500 1.2rem/1.35 var(--serif);box-shadow:0 6px 16px rgba(60,45,20,.08)}
+.note small{display:block;margin-top:14px;font:700 .85rem var(--type);opacity:.8}
+.note.s{background:var(--s-bg);color:var(--s-ink)}.note.b{background:var(--b-bg);color:var(--b-ink)}
+.note.y{background:var(--y-bg);color:var(--y-ink)}.note.k{background:var(--k-bg);color:var(--k-ink)}
+.note.t::before{content:"";position:absolute;top:-9px;left:24px;width:64px;height:20px;background:currentColor;opacity:.3;transform:rotate(-3deg);border-radius:2px}
+.note:nth-child(3n+1){transform:rotate(-.6deg)}.note:nth-child(3n+2){transform:rotate(.5deg)}
+.chain{background:var(--s-bg);color:var(--s-ink);border-radius:22px;padding:42px 34px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+.chain h2{margin-bottom:8px}.chain p{margin:0;max-width:44ch}
+.chain .btn{background:var(--s-ink);color:var(--s-bg)}
+.safe{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;list-style:none;padding:0;margin:0}
+.safe li{padding-left:30px;position:relative}
+.safe li::before{content:"";position:absolute;left:0;top:.45em;width:16px;height:16px;border-radius:50%;border:4px solid var(--b-ac)}
+footer{padding:36px 0 56px;color:var(--mute);font-size:.95rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line)}
+@media (max-width:760px){.hero,.chain{grid-template-columns:1fr}.steps,.safe{grid-template-columns:1fr}.hero{padding-bottom:40px}section{padding:40px 0}nav{gap:14px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="#top" aria-label="small.kind.things home"><svg id="logo" viewBox="-56 -56 312 112" aria-hidden="true"></svg>small.kind.things</a>
+  <nav aria-label="Main"><a href="#how">How it works</a><a href="#ideas">Ideas</a><a href="#safe">Stay safe</a></nav>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div>
+    <h1>Someone helped you.<br><em>Now it’s your turn.</em></h1>
+    <p class="lead">small.kind.things is a student-led kindness chain. One small help, passed from person to person, and every link counted.</p>
+    <div class="btns">
+      <a class="btn" id="formBtn" href="https://qrto.org/xgRECX" target="_blank" rel="noopener noreferrer">Add your link to the chain</a>
+      <a class="btn alt" href="#ideas">Find an idea</a>
+    </div>
+  </div>
+  <div class="polaroid" aria-live="polite">
+    <span class="tape" aria-hidden="true"></span>
+    <p class="today-l">today’s small kind thing</p>
+    <p class="today" id="today"></p>
+    <button class="btn" id="another" type="button">Show another</button>
+  </div>
+</div>
+
+<section id="how">
+  <h2>How the chain works</h2>
+  <p class="sub">You get a card. The card is your turn.</p>
+  <ol class="steps">
+    <li><b>Do one small kind thing</b><span>Share notes, say thank you, listen for five minutes. Small is the point.</span></li>
+    <li><b>Hand over the card</b><span>Give the card to the person you helped, so they can pass it on too.</span></li>
+    <li><b>Scan and add your link</b><span>The QR on the card opens a short form. No name needed.</span></li>
+  </ol>
+</section>
+
+<section id="ideas">
+  <h2>Small kind things to try</h2>
+  <p class="sub">Pick a place, pick a note, do it today.</p>
+  <div class="chips" role="group" aria-label="Filter ideas">
+    <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-f="college" aria-pressed="false">At college</button>
+    <button class="chip" type="button" data-f="home" aria-pressed="false">At home</button>
+    <button class="chip" type="button" data-f="online" aria-pressed="false">Online</button>
+    <button class="chip" type="button" data-f="outside" aria-pressed="false">Outside</button>
+  </div>
+  <div class="wall" id="wall"></div>
+</section>
+
+<section>
+  <div class="chain">
+    <div>
+      <h2>Got a card? Add your link.</h2>
+      <p>It takes one minute. We only share your story if you say yes, and you never have to give your name.</p>
+    </div>
+    <div><a class="btn" href="https://qrto.org/xgRECX" target="_blank" rel="noopener noreferrer">Open the form</a></div>
+  </div>
+</section>
+
+<section id="safe">
+  <h2>Keep it safe</h2>
+  <p class="sub">Kindness works best when everyone feels comfortable.</p>
+  <ul class="safe">
+    <li>Keep help small: notes, time, food, a listening ear. No money.</li>
+    <li>Meet new people only in public places, never at their home.</li>
+    <li>Ask before sharing anyone’s photo or story.</li>
+    <li>We never ask for passwords, OTPs or bank details. If anyone does in our name, ignore it.</li>
+    <li>If someone is in danger or distress, don’t handle it alone. Tele-MANAS (14416) is free, 24x7.</li>
+    <li>Help because you want to, not for the camera.</li>
+  </ul>
+</section>
+</main>
+
+<footer>
+  <span>Made by students in Ludhiana, India.</span>
+  <a href="https://www.instagram.com/small.kind.things" target="_blank" rel="noopener noreferrer">@small.kind.things on Instagram</a>
+</footer>
+</div>
+
+<script>
+(function(){
+  var ideas=[
+    ["Hold the door and say “after you.”","outside","s"],
+    ["Share your notes with the junior who missed class.","college","b"],
+    ["Thank the mess staff by name.","college","y"],
+    ["Text a friend one thing you admire about them.","online","k"],
+    ["Leave a kind comment on a small creator’s post.","online","s"],
+    ["Call your grandparents just to listen.","home","b"],
+    ["Refill the water jug in the hostel corridor.","college","k"],
+    ["Give your seat to someone who is standing.","outside","y"],
+    ["Say thank you to the driver when you get off.","outside","s"],
+    ["Explain a topic you understood to a friend who didn’t.","college","b"],
+    ["Cook one extra portion and share it.","home","y"],
+    ["Leave a sticky note of encouragement on a friend’s desk.","college","k"]
+  ];
+  var tags={college:"at college",home:"at home",online:"online",outside:"outside"};
+  var wall=document.getElementById("wall");
+  function render(f){
+    wall.textContent="";
+    ideas.forEach(function(it,i){
+      if(f!=="all"&&it[1]!==f)return;
+      var d=document.createElement("div");
+      d.className="note "+it[2]+(i%3===0?" t":"");
+      d.appendChild(document.createTextNode(it[0]));
+      var s=document.createElement("small");s.textContent=tags[it[1]];
+      d.appendChild(s);wall.appendChild(d);
+    });
+  }
+  render("all");
+  var chips=document.querySelectorAll(".chip");
+  chips.forEach(function(c){c.addEventListener("click",function(){
+    chips.forEach(function(x){x.setAttribute("aria-pressed","false")});
+    c.setAttribute("aria-pressed","true");render(c.getAttribute("data-f"));
+  })});
+  var today=document.getElementById("today"),cur=Math.floor(Date.now()/864e5)%ideas.length;
+  function show(){today.textContent=ideas[cur][0]}
+  show();
+  document.getElementById("another").addEventListener("click",function(){
+    var n;do{n=Math.floor(Math.random()*ideas.length)}while(n===cur);cur=n;show();
+  });
+  var svg=document.getElementById("logo"),NS="http://www.w3.org/2000/svg";
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+  el("circle",{cx:0,cy:0,r:48,fill:"none",stroke:"#7A9A6B","stroke-width":14});
+  el("circle",{cx:75,cy:0,r:48,fill:"none",stroke:"#D9A93E","stroke-width":14});
+  var pts=[];for(var i=0;i<120;i++){var t=i/120*2*Math.PI,x=16*Math.pow(Math.sin(t),3),y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));pts.push((152+x*3).toFixed(1)+","+(y*3).toFixed(1))}
+  el("polygon",{points:pts.join(" "),fill:"none",stroke:"#D98C7A","stroke-width":9,"stroke-linejoin":"round"});
+})();
+</script>
+</body>
+</html>
